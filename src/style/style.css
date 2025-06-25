@@ -1,0 +1,440 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #B3B3B3;
+}
+
+@font-face{
+  font-family: Yekan;
+  src: url("../font/Yekan.ttf");
+}
+
+body{
+  font-family: Yekan !important;
+  color: #fff;
+  /* background: radial-gradient( circle 10000px at 5.2% 7.2%, #121212 0%, #1f1f1f 7.5%, #292929 44.7% ); */
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  direction: rtl;
+  max-width: 1200px;
+  margin: 10px auto 0 !important;
+}
+
+.modal-content{
+  background-color: transparent !important;
+  border: none !important;
+}
+
+#main{
+  margin: 15px auto 30px;
+}
+
+/*........................................search.bar........................................*/
+
+#search-section {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#middle-section{
+  display: flex;
+  align-items: flex-end;
+}
+
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 250px;
+}
+
+.input {
+  font-family: "Yekan", "IRANSans", sans-serif;
+  width: 250px;
+  height: 45px;
+  padding-right: 15px;
+  padding-left: 10px;
+  border: 0;
+  outline: none;
+  color: #bdbecb;
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: text;
+  z-index: 0;
+  text-align: right;
+  direction: rtl; 
+  /*glasses style*/
+  background: rgba(22, 23, 29, 0.61);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+}
+
+.input::placeholder {
+  color: #B3B3B3;
+  text-align: right;
+}
+
+.input:hover {
+  box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+}
+
+.input:active {
+  transform: scale(0.95);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 2.5px #2f303d;
+}
+
+.search-icon {
+  position: absolute;
+  right: 1rem;
+  left: auto; 
+  fill: #bdbecb;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/*........................................equalizer.section........................................*/
+
+#equalizer-section {
+  min-height: 412px;
+  margin-bottom: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#circular-progressbar{
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 998;
+}
+
+#equalizer-canvas{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 998;
+}
+
+#equalizer-section img{
+  border-radius: 50%;
+  position: absolute;
+  z-index: 999;
+}
+
+#equalizer-section img:hover{
+  width: 265px !important;
+  height: 265px !important;
+  transition: all 0.7s;
+}
+
+@keyframes spin {
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+#equalizer-section img.rotate{
+  animation: spin 10s linear infinite;
+}
+
+
+/*........................................music.info........................................*/
+
+#app{
+  padding: 10px;
+  scrollbar-width: none;
+}
+
+#content{
+  font-family: "Yekan", "IRANSans", sans-serif;
+  max-height: 500px;
+  min-height: 350px;
+  width: 500px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  margin: 10px auto 5px;
+  padding: 10px;
+  /*glasses style*/
+  background: rgba(22, 23, 29, 0.61);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+}
+
+.info{
+  font-family: "Yekan", "IRANSans", sans-serif;
+  max-height: 150px;
+  width: 500px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  margin: 10px auto 5px;
+  padding: 10px;
+  /*glasses style*/
+  background: rgba(22, 23, 29, 0.61);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+}
+
+#middle-section{
+  min-height: 350px;
+  margin: 10px auto 40px;
+}
+
+.swiper {
+  width: 400px;
+  max-height: 631px;
+  margin: 0 !important;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  /*glasses style*/
+  background: rgba(22, 23, 29, 0.44);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.4px);
+  -webkit-backdrop-filter: blur(9.4px);
+}
+
+.swiper-slide {
+  display: flex !important;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  padding: 5px 20px 5px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid #6b6b6ba4;
+}
+
+.swiper-slide:hover{
+  background: #6b6b6ba4;
+}
+
+.swiper-slide img{
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 5px;
+}
+
+#play-pause-btn{
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-image: url('/images/not_started.png');
+  background-size: cover;
+  cursor: pointer; 
+  /*glasses style*/  
+  background-color: rgba(3, 223, 81, 0.64);
+  border-radius: 50%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.4px);
+  -webkit-backdrop-filter: blur(3.4px);
+  border: 1px solid rgba(3, 223, 81, 0.82);
+}
+
+.control-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  color: #b3b3b3;
+}
+
+#next-track{
+  background-image: url('/images/skip_next.png');
+  background-size: cover;
+}
+
+#previous-track{
+  background-image: url('/images/skip_previous.png');
+  background-size: cover;
+}
+ 
+#forward{
+  background-image: url('/images/forward.png');
+  background-size: cover;
+}
+
+#back{
+  background-image: url('/images/replay.png');
+  background-size: cover;
+} 
+
+#player-controls {
+  direction: ltr;
+  font-family: "Yekan", "IRANSans", sans-serif;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  /*glasses style*/
+  background: rgba(22, 23, 29, 0.61);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+}
+
+#music-info{
+  direction: rtl;
+  font-family: "Yekan", "IRANSans", sans-serif;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: transparent;
+}
+
+#seekbar-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#current-time, #music-duration {
+  color: #bdbecb;
+  font-size: 14px;
+  min-width: 40px;
+  text-align: center;
+}
+
+#search-musics{
+  width: 400px;
+  max-height: 300px;
+  position: absolute;
+  top: 80px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  z-index: 1000;
+  /*glasses style*/
+  background: rgba(22, 23, 29, 0.44);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.4px);
+  -webkit-backdrop-filter: blur(9.4px);
+}
+
+.searched-music{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+.searched-music:hover{
+  background: #6b6b6ba4;
+}
+
+.searched-music img{
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 5px;
+}
+
+.music-player {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 25px 45px;
+  /*glasses style*/
+  background: rgba(22, 23, 29, 0.253);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.4px);
+  -webkit-backdrop-filter: blur(9.4px);
+  }
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 12px;
+}
+
+.time {
+  font-size: 13px;
+  color: #b3b3b3;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.control-btn:hover {
+  background-color: transparent;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+
+.play-btn:hover {
+  background-color: #1ed760;
+  transform: scale(1.08);
+}
+
+.skip-btn::before {
+  color: #b3b3b3;
+  font-weight: bold;
+}
+
+.skip-btn.back::after {
+  margin-left: 3px;
+  font-size: 12px;
+}
+
+.skip-btn.forward::before {
+  margin-right: 3px;
+  font-size: 12px;
+}
+
+.prev-next-btn {
+  font-size: 22px;
+}
+
+/* Animation for play button */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.play-btn.playing {
+  animation: pulse 1.5s infinite;
+}

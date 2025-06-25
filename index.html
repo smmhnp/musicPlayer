@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="src/style/seekbar.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!--bootstrap-->
+    <link rel="stylesheet" href="src/bootstrap/css/bootstrap.rtl.css">
+    <link rel="stylesheet" href="src/bootstrap/css/bootstrap.rtl.min.css">
+    
+    <title>music player</title>
+
+    <style>
+       .btn-show-modal {
+            margin: 50px auto;
+            display: block;
+            padding: 12px 30px;
+            font-size: 18px;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <section id="search-section">
+        <div class="group">
+          <input id="search-input" class="input" type="search" placeholder="جستجو ..." name="searchbar" dir="rtl" />
+        </div>
+
+        <div id="search-musics">
+        </div>
+      </section>
+
+      <section id="middle-section">
+        <div id="player-controls">
+
+          <div id="main">
+            <div id="equalizer-section">
+
+              <img src="" alt="">
+              <div id="circular-progressbar"></div>
+              <canvas id="equalizer-canvas"></canvas>
+
+            </div>
+
+            <div id="seekbar-section">
+              <div class="music-player">
+
+                <div class="progress-container">
+                    <span id="current-time" class="time">0:00</span>
+                    <input id="seekbar" type="range" min="0" max="100" value="0">
+                    <span id="music-duration" class="time">3:30</span>
+                </div>
+                
+                <div class="controls">
+                  <button id="previous-track" class="control-btn prev-next-btn" title="Previous track"></button>
+                  <button id="back" class="control-btn skip-btn back" title="10 seconds back"></button>
+                  <button id="play-pause-btn" class="control-btn" title="Play/Pause"></button>
+                  <button id="forward" class="control-btn skip-btn forward" title="10 seconds forward"></button>
+                  <button id="next-track" class="control-btn prev-next-btn" title="Next track"></button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+          <div class="swiper">
+            <div class="swiper-wrapper">
+            </div> 
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!--bootstrap-->
+    <script src="src/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--app-->
+    <script type="module" src="/src/app.js"></script>
+
+
+    <!-- open modal whit click on image -->
+    <script>
+      let img = document.querySelector('#equalizer-section img');
+
+      img.addEventListener('click', () => {
+        var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+        modal.show();
+      });
+    </script>
+
+  </body>
+</html>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div id="music-info">
+
+        <div class="info">
+          <h3 id="title">عنوان موزیک</h1>
+          <h3 id="artist">خواننده موزیک</h1>
+          <h4 id="genre">ژانر موزیک</h2>
+        </div>
+
+        <div id="content">
+            شعر موزیک
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
