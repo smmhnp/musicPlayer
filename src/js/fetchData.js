@@ -1,4 +1,5 @@
 
+
 /*
  * to get api file:
  * 1- store file in github 
@@ -8,7 +9,7 @@
 
 function fetchData (){
     return new Promise(resovle => {
-        fetch('https://cdn.jsdelivr.net/gh/smmhnp/<gtihub-repository>/<filename>.json')
+        fetch('https://cdn.jsdelivr.net/gh/smmhnp/musicPlayerData/data.json')
             .then(response => response.json())
             .then(data => resovle(data))
     })
