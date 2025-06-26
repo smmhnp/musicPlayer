@@ -6,11 +6,11 @@ import './js/seekbar';
 import './js/searchMusic';
 
 
-
 let musics;
 
 async function getData(){
     musics = await fetchData();
+
     passDataToSliderModule(musics);
     passDataToSearchModule(musics);
 }

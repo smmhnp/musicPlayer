@@ -296,7 +296,6 @@ body{
   flex-wrap: nowrap;
   align-items: flex-start;
   /*glasses style*/
-  background: rgba(22, 23, 29, 0.61);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.5px);
@@ -369,7 +368,7 @@ body{
   border-radius: 12px;
   padding: 25px 45px;
   /*glasses style*/
-  background: rgba(22, 23, 29, 0.253);
+  background: rgba(22, 23, 29, 0.664);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.4px);

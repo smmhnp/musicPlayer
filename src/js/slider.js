@@ -1,6 +1,9 @@
 import Swiper from "swiper";
 import 'swiper/css';
 import { Manipulation, FreeMode } from "swiper/modules";
+import { setUpAudio } from "./audio";
+import { setPlayPauseBtnAsPause } from "./seekbar";
+import { setEqualizerImage } from "./equalizer/equalizerImage";
 import handelMusicClicked from "./handelMusicClicked";
 
 
@@ -11,7 +14,7 @@ let musicsData;                                                                 
 function createSlider (musics){
     const swiper = new Swiper('.swiper', {                                                                              // create swiper object
         modules: [Manipulation, FreeMode],
-        // slidesPerView: 10,                                                                                              // show 10 slide in page
+        // slidesPerView: 10,                                                                                           // show 10 slide in page
         freeMode: true,                                                                                                 // to smooth slider
         loop: true,                                                                                                     // create loop for slider
         direction: 'vertical',
@@ -35,6 +38,16 @@ function createSlider (musics){
 
 function setClickListenerOnSliderItems (){                                                                              // find music by click on it
     let slides = document.querySelectorAll('.swiper-slide');                                                            // get all slide of slider                 
+    let uuid = slides[0].getAttribute('data-uuid');
+    let foundMusic = musicsData.find(music => music.uuid === uuid);
+
+    setUpAudio(foundMusic.url);
+    setMusicInfoInDOM(foundMusic);
+    setEqualizerImage(foundMusic.cover_image);
+    setPlayPauseBtnAsPause();
+
+
+
     slides.forEach(slide => {
         slide.addEventListener('click', () => {                                                                         // set click event
             let uuid = slide.getAttribute('data-uuid');                                                                 // get uuid from data-uuid Attribute
@@ -45,21 +58,22 @@ function setClickListenerOnSliderItems (){                                      
     });
 }
 
-function setMusicInfoInDOM (music){
+function setMusicInfoInDOM (music, array = []){
     document.querySelector('#music-info #title').innerHTML = "عنوان: " + music.title;
     document.querySelector('#music-info #artist').innerHTML = "خواننده: " + music.artist;
     document.querySelector('#music-info #genre').innerHTML = "سبک: : " + music.genre;
     document.querySelector('#music-info #content').innerHTML = "<b>متن:</b> <br>" + music.lyric.split('\n').join('<br>');
 
-    // ...............................next.music.value...................................
+
+    // ...............................set.nextBtn.value...............................
 
     if (music.index === "22")
         next.value = 1;
-    else
+    else 
         next.value = parseInt(music.index) + 1;
 
 
-    // ...............................previous.music.value...............................
+    // ...............................set.previousBtn.value...............................
 
     if (music.index === "1")
         previous.value = 22;
@@ -67,22 +81,32 @@ function setMusicInfoInDOM (music){
         previous.value = parseInt(music.index) - 1;
 
 
-    // ...............................selected. music.list...............................
+    // ...............................selected.music.list...............................
 
     let slides = document.querySelectorAll('.swiper-slide');
     slides.forEach(slide => {
         if (slide.getAttribute('data-uuid') === music.uuid){
             slide.style.background = "#6b6b6ba4";
+            slide.classList.add('swiper-active');
             return 1;
         }
+
         slide.style.background = "";
-    })
+        slide.classList.remove('swiper-active');
+
+    });
 }
+
+
+
 
 function passDataToSliderModule (musics){
     musicsData = musics;
     createSlider(musics);
     setClickListenerOnSliderItems();
+
+
+    // ...............................next.music...............................
 
     document.querySelectorAll('#next-track').forEach(next => {
         next.addEventListener('click', () => {
@@ -94,6 +118,9 @@ function passDataToSliderModule (musics){
         });
     });
 
+
+    // ...............................previous.music...............................
+
     document.querySelectorAll('#previous-track').forEach(previous => {
         previous.addEventListener('click', () => {
             let index = previous.getAttribute('value');
@@ -103,6 +130,9 @@ function passDataToSliderModule (musics){
             handelMusicClicked(foundMusic);
         });
     });
+
+
+
 }
 
 export {passDataToSliderModule, setMusicInfoInDOM} 
